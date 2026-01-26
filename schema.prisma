@@ -1,0 +1,288 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@postgres/app" // hardcoded because it's an internal docker connection
+}
+
+// Business entities
+model Business {
+  id           Int      @id @default(autoincrement())
+  name         String   @unique @db.VarChar(255) // Used for subdomain
+  displayName  String   @db.VarChar(255) // Business display name
+  email        String   @unique @db.VarChar(255) // Business contact email
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  adminUsers   AdminUser[]
+  users        User[]
+  tests        Test[]
+  trainings    Training[]
+  vacancies    Vacancy[]
+  platformSettings PlatformSetting[]
+
+  @@map("businesses")
+}
+
+// User entities
+model User {
+  id                    String                @id @default(uuid()) @db.Uuid
+  businessId            Int                   @default(1) @map("business_id")
+  vacancyId             String?               @map("vacancy_id") @db.Uuid
+  firstName             String                @map("first_name") @db.VarChar(255)
+  lastName              String                @map("last_name") @db.VarChar(255)
+  email                 String                @db.VarChar(255)
+  phoneNumber           String                @map("phone_number") @db.VarChar(50)
+  yearsOfQualification  Int?                  @map("years_of_qualification")
+  salary                Decimal?              @db.Decimal(10, 2)
+  cvUrl                 String?               @map("cv_url") @db.VarChar(2048)
+  socialLink            String?               @map("social_link") @db.VarChar(2048)
+  comment               String?               @db.Text
+  hrComment             String?               @map("hr_comment") @db.Text
+  applicationStatus     ApplicationStatus     @default(SUBMITTED) @map("application_status")
+  createdAt             DateTime              @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt             DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  business    Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  vacancy     Vacancy?     @relation(fields: [vacancyId], references: [id], onDelete: SetNull)
+  submissions Submission[]
+
+  @@unique([businessId, email]) // Ensure unique email per business
+  @@map("users")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid()) @db.Uuid
+  businessId   Int      @default(1) @map("business_id")
+  username     String   @db.VarChar(255)
+  email        String?  @db.VarChar(255)
+  isVerified               Boolean   @default(false) @map("is_verified")
+  verificationToken        String?   @map("verification_token") @db.VarChar(255)
+  verificationTokenExpiresAt DateTime? @map("verification_token_expires_at") @db.Timestamptz
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  passwordResetTokens PasswordResetToken[]
+
+  @@unique([businessId, username])
+  @@unique([businessId, email])
+  @@map("admin_users")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid()) @db.Uuid
+  token     String   @unique @db.VarChar(255) // Hashed token
+  adminId   String   @map("admin_id") @db.Uuid
+  expiresAt DateTime @map("expires_at") @db.Timestamptz
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  // Relations
+  admin AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@map("password_reset_tokens")
+}
+
+// Platform configuration
+model PlatformSetting {
+  id           Int      @id @default(autoincrement())
+  businessId   Int?     @map("business_id") // Nullable for global settings
+  settingKey   String   @map("setting_key") @db.VarChar(255)
+  settingValue String   @map("setting_value") @db.Text
+
+  // Relations
+  business Business? @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, settingKey]) // Ensure unique setting per business
+  @@map("platform_settings")
+}
+
+// Training materials
+model Training {
+  id          String      @id @default(uuid()) @db.Uuid
+  businessId  Int         @map("business_id")
+  name        String      @db.VarChar(255)
+  contentType ContentType @map("content_type")
+  contentUrl  String      @map("content_url") @db.VarChar(2048)
+  createdAt   DateTime    @default(now()) @map("created_at") @db.Timestamptz
+
+  // Relations
+  business      Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  testTrainings TestTraining[]
+
+  @@map("trainings")
+}
+
+// Vacancy management
+model Vacancy {
+  id          String   @id @default(uuid()) @db.Uuid
+  businessId  Int      @map("business_id")
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  imageUrl    String?  @map("image_url") @db.VarChar(2048)
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  users    User[]
+
+  @@map("vacancies")
+}
+
+// Test management
+model Test {
+  id                      String    @id @default(uuid()) @db.Uuid
+  businessId              Int       @default(1) @map("business_id")
+  name                    String    @db.VarChar(255)
+  description             String?   @db.Text
+  type                    TestType
+  durationMinutes         Int       @map("duration_minutes")
+  passThresholdPercent    Decimal   @map("pass_threshold_percent") @db.Decimal(5, 2)
+  showResultsToCandidate  Boolean   @default(false) @map("show_results_to_candidate")
+  createdAt               DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt               DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  business      Business       @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  questions     Question[]
+  submissions   Submission[]
+  testTrainings TestTraining[]
+
+  @@map("tests")
+}
+
+model TestTraining {
+  testId     String @map("test_id") @db.Uuid
+  trainingId String @map("training_id") @db.Uuid
+
+  // Relations
+  test     Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+  training Training @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+
+  @@id([testId, trainingId])
+  @@map("test_trainings")
+}
+
+// Questions and answers
+model Question {
+  id              String      @id @default(uuid()) @db.Uuid
+  testId          String      @map("test_id") @db.Uuid
+  title           String      @db.Text
+  descriptionText String?     @map("description_text") @db.Text
+  mediaUrl        String?     @map("media_url") @db.VarChar(2048)
+  type            QuestionType
+  maxScore        Int         @default(1) @map("max_score")
+  orderIndex      Int         @map("order_index")
+
+  // Relations
+  test              Test               @relation(fields: [testId], references: [id], onDelete: Cascade)
+  answers           Answer[]
+  submissionAnswers SubmissionAnswer[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id             String  @id @default(uuid()) @db.Uuid
+  questionId     String  @map("question_id") @db.Uuid
+  answerText     String? @map("answer_text") @db.Text
+  answerImageUrl String? @map("answer_image_url") @db.VarChar(2048)
+  isCorrect      Boolean @default(false) @map("is_correct")
+  orderIndex     Int     @map("order_index")
+
+  // Relations
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("answers")
+}
+
+// Submissions and results
+model Submission {
+  id                 String           @id @default(uuid()) @db.Uuid
+  userId             String           @map("user_id") @db.Uuid
+  testId             String           @map("test_id") @db.Uuid
+  status             SubmissionStatus @default(PENDING_APPROVAL)
+  startTime          DateTime?        @map("start_time") @db.Timestamptz
+  endTime            DateTime?        @map("end_time") @db.Timestamptz
+  finalRawScore      Int?             @map("final_raw_score")
+  finalPercentScore  Decimal?         @map("final_percent_score") @db.Decimal(5, 2)
+  finalIqScore       Int?             @map("final_iq_score")
+  finalResult        TestResult?      @map("final_result")
+  adminNotes         String?          @map("admin_notes") @db.Text
+  createdAt          DateTime         @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt          DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  // Relations
+  user              User               @relation(fields: [userId], references: [id])
+  test              Test               @relation(fields: [testId], references: [id])
+  submissionAnswers SubmissionAnswer[]
+
+  @@map("submissions")
+}
+
+model SubmissionAnswer {
+  id                Int      @id @default(autoincrement())
+  submissionId      String   @map("submission_id") @db.Uuid
+  questionId        String   @map("question_id") @db.Uuid
+  selectedAnswerIds String[] @map("selected_answer_ids") @db.Uuid
+  openTextAnswer    String?  @map("open_text_answer") @db.Text
+  assignedScore     Int      @default(0) @map("assigned_score")
+  isReviewed        Boolean  @default(false) @map("is_reviewed")
+
+  // Relations
+  submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  question   Question   @relation(fields: [questionId], references: [id])
+
+  @@map("submission_answers")
+}
+
+// Enums
+enum ContentType {
+  VIDEO
+  PDF
+  IMAGE
+}
+
+enum TestType {
+  INTERNAL
+  EXTERNAL
+}
+
+enum QuestionType {
+  SINGLE_CHOICE_TEXT
+  MULTIPLE_CHOICE_TEXT
+  SINGLE_CHOICE_IMAGE
+  MULTIPLE_CHOICE_IMAGE
+  OPEN_TEXT
+}
+
+enum SubmissionStatus {
+  PENDING_APPROVAL
+  IN_PROGRESS
+  COMPLETED
+  EVALUATED
+  CANCELED
+}
+
+enum TestResult {
+  PASS
+  FAIL
+}
+
+enum ApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  TEST_ASSIGNED
+}

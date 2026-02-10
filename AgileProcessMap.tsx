@@ -112,7 +112,7 @@ export const AgileProcessMap: React.FC = () => {
             ფაზა 1: გუნდის ფორმირება და ადაპტაცია
           </text>
           <text x="1520" y="218" fontSize="16" fontWeight="bold" fill="#bfdbfe" textAnchor="end" fontFamily="system-ui, -apple-system, sans-serif">
-            Hiring &amp; Onboarding
+            Hiring & Onboarding
           </text>
 
           {/* Subtitle */}
@@ -326,7 +326,7 @@ export const AgileProcessMap: React.FC = () => {
           <g>
             <rect x="180" y="1188" width="10" height="10" rx="2" fill="#f59e0b" />
             <text x="200" y="1198" fontSize="15" fontWeight="bold" fill="#1e293b" fontFamily="system-ui, -apple-system, sans-serif">
-              Scrum of Scrums (SoS) &amp; Dependency Management
+              Scrum of Scrums (SoS) & Dependency Management
             </text>
             <rect x="200" y="1210" width="160" height="22" rx="11" fill="#ef4444" opacity="0.1" stroke="#ef4444" strokeWidth="1" />
             <text x="280" y="1226" fontSize="11" fontWeight="bold" fill="#ef4444" fontFamily="system-ui, -apple-system, sans-serif">
@@ -408,7 +408,7 @@ export const AgileProcessMap: React.FC = () => {
             ფაზა 4: ციკლის დასრულება და ანალიტიკა
           </text>
           <text x="1520" y="1508" fontSize="16" fontWeight="bold" fill="#ddd6fe" textAnchor="end" fontFamily="system-ui, -apple-system, sans-serif">
-            Delivery &amp; Feedback
+            Delivery & Feedback
           </text>
 
           <text x="180" y="1555" fontSize="14" fontStyle="italic" fill="#64748b" fontFamily="system-ui, -apple-system, sans-serif">

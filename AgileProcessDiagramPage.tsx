@@ -102,7 +102,7 @@ export const AgileProcessDiagramPage: React.FC = () => {
           <div className="space-y-6 text-gray-700 dark:text-gray-300">
             <div>
               <h3 className="font-bold text-lg mb-2 text-blue-600 dark:text-blue-400">
-                ფაზა 1: გუნდის ფორმირება და ადაპტაცია (Hiring &amp; Onboarding)
+                ფაზა 1: გუნდის ფორმირება და ადაპტაცია (Hiring & Onboarding)
               </h3>
               <p className="mb-2 italic text-sm text-gray-500">
                 სანამ პროცესს დავიწყებთ, გვჭირდება ხალხი, ვინც ამ პროცესს „სულს შთაბერავს".
@@ -144,7 +144,7 @@ export const AgileProcessDiagramPage: React.FC = () => {
 
             <div>
               <h3 className="font-bold text-lg mb-2 text-violet-600 dark:text-violet-400">
-                ფაზა 4: ციკლის დასრულება და ანალიტიკა (Delivery &amp; Feedback)
+                ფაზა 4: ციკლის დასრულება და ანალიტიკა (Delivery & Feedback)
               </h3>
               <p className="mb-2 italic text-sm text-gray-500">
                 სპრინტის დასრულების შემდეგ ვაჯამებთ შედეგებს.

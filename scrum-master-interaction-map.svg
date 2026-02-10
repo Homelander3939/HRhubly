@@ -1,0 +1,159 @@
+<svg id="scrum-diagram" width="1400" height="1000" viewBox="0 0 1400 1000" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gradient definitions -->
+                    <linearGradient id="smGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#3b82f6"/>
+                        <stop offset="100%" stop-color="#1d4ed8"/>
+                    </linearGradient>
+                    <linearGradient id="poGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#10b981"/>
+                        <stop offset="100%" stop-color="#059669"/>
+                    </linearGradient>
+                    <linearGradient id="devGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f59e0b"/>
+                        <stop offset="100%" stop-color="#d97706"/>
+                    </linearGradient>
+                    <linearGradient id="shGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#8b5cf6"/>
+                        <stop offset="100%" stop-color="#6d28d9"/>
+                    </linearGradient>
+                    <linearGradient id="intersectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ec4899"/>
+                        <stop offset="100%" stop-color="#be185d"/>
+                    </linearGradient>
+
+                    <!-- Arrow marker -->
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#64748b"/>
+                    </marker>
+                </defs>
+
+                <!-- Title -->
+                <text x="700" y="40" font-size="32" font-weight="bold" text-anchor="middle" fill="#1e293b">
+                    კრამ მასტერის ინტერაქციის რუკა
+                </text>
+                <text x="700" y="70" font-size="20" text-anchor="middle" fill="#64748b">
+                    (5 გუნდიანი სტრუქტურა - Hub პრინციპი)
+                </text>
+
+                <!-- Connection lines from SM to other entities -->
+                <!-- To POs -->
+                <line x1="700" y1="500" x2="350" y2="280" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                <line x1="350" y1="280" x2="700" y2="500" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                
+                <!-- To Dev Teams -->
+                <line x1="700" y1="500" x2="1050" y2="280" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                <line x1="1050" y1="280" x2="700" y2="500" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                
+                <!-- To Stakeholders -->
+                <line x1="700" y1="500" x2="350" y2="750" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                <line x1="350" y1="750" x2="700" y2="500" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+                
+                <!-- To Intersection Zone -->
+                <line x1="700" y1="500" x2="1050" y2="750" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+
+                <!-- Center: SCRUM MASTER -->
+                <g id="scrumMaster">
+                    <circle cx="700" cy="500" r="120" fill="url(#smGradient)" stroke="#1e293b" stroke-width="4"/>
+                    <text x="700" y="480" font-size="24" font-weight="bold" text-anchor="middle" fill="white">
+                        SCRUM MASTER
+                    </text>
+                    <text x="700" y="505" font-size="14" text-anchor="middle" fill="white">
+                        ცენტრალური როლი
+                    </text>
+                    <text x="700" y="525" font-size="12" text-anchor="middle" fill="#e0f2fe">
+                        ფასილიტატორი • მწვრთნელი
+                    </text>
+                    <text x="700" y="542" font-size="12" text-anchor="middle" fill="#e0f2fe">
+                        ფარი • კოუჩი
+                    </text>
+                </g>
+
+                <!-- Top Left: PRODUCT OWNERS -->
+                <g id="productOwners">
+                    <rect x="150" y="150" width="400" height="260" rx="15" fill="url(#poGradient)" stroke="#1e293b" stroke-width="3"/>
+                    <text x="350" y="185" font-size="22" font-weight="bold" text-anchor="middle" fill="white">
+                        PRODUCT OWNERS (5 PO)
+                    </text>
+                    <text x="350" y="210" font-size="14" font-style="italic" text-anchor="middle" fill="#d1fae5">
+                        ფოკუსი: პროცესის ხარისხი და მზაობა
+                    </text>
+                    
+                    <text x="170" y="240" font-size="13" fill="white">✓ DoR (Definition of Ready) დაცვა</text>
+                    <text x="170" y="265" font-size="13" fill="white">✓ ეფექტური Backlog Management</text>
+                    <text x="170" y="290" font-size="13" fill="white">✓ Dependencies მართვა 5 გუნდს შორის</text>
+                    <text x="170" y="315" font-size="13" fill="white">✓ Velocity ანალიზი და პროგნოზები</text>
+                    <text x="170" y="340" font-size="13" fill="white">✓ Scrum of Scrums ფასილიტაცია</text>
+                    <text x="170" y="365" font-size="13" fill="white">✓ ბექლოგის პრიორიტეტიზაცია</text>
+                    <text x="170" y="390" font-size="13" fill="white">✓ Story slicing ტექნიკები</text>
+                </g>
+
+                <!-- Top Right: DEVELOPMENT TEAMS -->
+                <g id="developmentTeams">
+                    <rect x="850" y="150" width="400" height="260" rx="15" fill="url(#devGradient)" stroke="#1e293b" stroke-width="3"/>
+                    <text x="1050" y="185" font-size="22" font-weight="bold" text-anchor="middle" fill="white">
+                        DEVELOPMENT TEAMS
+                    </text>
+                    <text x="1050" y="210" font-size="14" font-style="italic" text-anchor="middle" fill="#fef3c7">
+                        ფოკუსი: ეფექტურობა და გუნდის ჯანმრთელობა
+                    </text>
+                    
+                    <text x="870" y="240" font-size="13" fill="white">✓ Impediment Removal (ბლოკერების მოხსნა)</text>
+                    <text x="870" y="265" font-size="13" fill="white">✓ შეფასების ფასილიტაცია (Story Points)</text>
+                    <text x="870" y="290" font-size="13" fill="white">✓ Burndown მონიტორინგი</text>
+                    <text x="870" y="315" font-size="13" fill="white">✓ Team Happiness და მოტივაცია</text>
+                    <text x="870" y="340" font-size="13" fill="white">✓ რეტროსპექტივების ფასილიტაცია</text>
+                    <text x="870" y="365" font-size="13" fill="white">✓ გუნდური შეფასება (არა თავსმოხვეული)</text>
+                    <text x="870" y="390" font-size="13" fill="white">✓ რისკების დროული შეტყობინება</text>
+                </g>
+
+                <!-- Bottom Left: STAKEHOLDERS -->
+                <g id="stakeholders">
+                    <rect x="150" y="620" width="400" height="260" rx="15" fill="url(#shGradient)" stroke="#1e293b" stroke-width="3"/>
+                    <text x="350" y="655" font-size="22" font-weight="bold" text-anchor="middle" fill="white">
+                        STAKEHOLDERS
+                    </text>
+                    <text x="350" y="680" font-size="14" font-style="italic" text-anchor="middle" fill="#ede9fe">
+                        ფოკუსი: მოლოდინების მართვა და განათლება
+                    </text>
+                    
+                    <text x="170" y="710" font-size="13" fill="white">✓ Agile განათლება</text>
+                    <text x="170" y="735" font-size="13" fill="white">✓ ცვალებადი Scope-ის უპირატესობები</text>
+                    <text x="170" y="760" font-size="13" fill="white">✓ რეალური მონაცემები (არა დაპირებები)</text>
+                    <text x="170" y="785" font-size="13" fill="white">✓ გუნდის დაცვა გარე ზეწოლისგან</text>
+                    <text x="170" y="810" font-size="13" fill="white">✓ სპრინტის შუა-გზაზე ცვლილებების თავიდან აცილება</text>
+                    <text x="170" y="835" font-size="13" fill="white">✓ გამჭვირვალობა და რეალისტური პროგნოზი</text>
+                    <text x="170" y="860" font-size="13" fill="white">✓ 5 გუნდის შესაძლებლობების დემონსტრაცია</text>
+                </g>
+
+                <!-- Bottom Right: INTERSECTION ZONE -->
+                <g id="intersectionZone">
+                    <rect x="850" y="620" width="400" height="260" rx="15" fill="url(#intersectionGradient)" stroke="#1e293b" stroke-width="3"/>
+                    <text x="1050" y="655" font-size="20" font-weight="bold" text-anchor="middle" fill="white">
+                        გადაკვეთის ზონა
+                    </text>
+                    <text x="1050" y="678" font-size="16" text-anchor="middle" fill="white">
+                        SM + POs + SHs (ერთად)
+                    </text>
+                    <text x="1050" y="700" font-size="13" font-style="italic" text-anchor="middle" fill="#fce7f3">
+                        ფოკუსი: გამჭვირვალობა და სტრატეგია
+                    </text>
+                    
+                    <text x="870" y="730" font-size="13" fill="white">✓ Sprint Review (Demo) ფასილიტაცია</text>
+                    <text x="870" y="755" font-size="13" fill="white">✓ კონსტრუქციული უკუკავშირი</text>
+                    <text x="870" y="780" font-size="13" fill="white">✓ QBR (კვარტალური შეხვედრები)</text>
+                    <text x="870" y="805" font-size="13" fill="white">✓ Roadmap-ის პროგრესის წარდგენა</text>
+                    <text x="870" y="830" font-size="13" fill="white">✓ ბიზნეს ღირებულების დემონსტრაცია</text>
+                    <text x="870" y="855" font-size="13" fill="white">✓ Roadmap Alignment (სტრატეგიული თანხვედრა)</text>
+                </g>
+
+                <!-- Legend at bottom -->
+                <g id="legend">
+                    <text x="700" y="960" font-size="14" text-anchor="middle" fill="#64748b">
+                        ეს დიაგრამა აგებულია "ჰაბის" (Hub) პრინციპით - Scrum Master ცენტრში მართავს პროცესებს სხვადასხვა მიმართულებით
+                    </text>
+                    <text x="700" y="985" font-size="12" text-anchor="middle" fill="#94a3b8">
+                        ორმხრივი ისრები (↔️) აჩვენებს აქტიურ, უწყვეტ კომუნიკაციას ყველა როლს შორის
+                    </text>
+                </g>
+            </svg>

@@ -33,8 +33,8 @@ export const ScrumMasterDiagramPage: React.FC = () => {
     const img = new Image();
 
     // Set high resolution for quality
-    canvas.width = 2800; // 2x resolution
-    canvas.height = 2000;
+    canvas.width = 3200; // 2x resolution
+    canvas.height = 1800;
 
     img.onload = () => {
       ctx?.drawImage(img, 0, 0);
@@ -63,7 +63,7 @@ export const ScrumMasterDiagramPage: React.FC = () => {
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            კრამ მასტერის ინტერაქციის რუკა
+            სკრამ მასტერის ინტერაქციის რუკა
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             5 გუნდიანი სტრუქტურა - Hub პრინციპი

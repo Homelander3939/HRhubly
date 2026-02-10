@@ -9,9 +9,9 @@ export const ScrumMasterInteractionMap: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-8">
       <svg
-        width="1400"
-        height="1000"
-        viewBox="0 0 1400 1000"
+        width="1600"
+        height="900"
+        viewBox="0 0 1600 900"
         className="max-w-full h-auto"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -38,35 +38,51 @@ export const ScrumMasterInteractionMap: React.FC = () => {
             <stop offset="100%" stopColor="#be185d" />
           </linearGradient>
 
-          {/* Arrow marker */}
-          <marker
-            id="arrowhead"
-            markerWidth="10"
-            markerHeight="10"
-            refX="9"
-            refY="3"
-            orient="auto"
-          >
-            <polygon points="0 0, 10 3, 0 6" fill="#64748b" />
+          {/* Colored arrow markers */}
+          <marker id="arrowGreen" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+            <polygon points="0 0, 12 4, 0 8" fill="#10b981" />
           </marker>
+          <marker id="arrowOrange" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+            <polygon points="0 0, 12 4, 0 8" fill="#f59e0b" />
+          </marker>
+          <marker id="arrowPurple" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+            <polygon points="0 0, 12 4, 0 8" fill="#8b5cf6" />
+          </marker>
+          <marker id="arrowPink" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+            <polygon points="0 0, 12 4, 0 8" fill="#ec4899" />
+          </marker>
+          <marker id="arrowBlue" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+            <polygon points="0 0, 12 4, 0 8" fill="#3b82f6" />
+          </marker>
+
+          {/* Shadow filter */}
+          <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="2" dy="4" stdDeviation="6" floodColor="#000000" floodOpacity="0.15" />
+          </filter>
+          <filter id="glowBlue" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="0" stdDeviation="8" floodColor="#3b82f6" floodOpacity="0.3" />
+          </filter>
         </defs>
+
+        {/* Background */}
+        <rect x="0" y="0" width="1600" height="900" fill="#f8fafc" />
 
         {/* Title */}
         <text
-          x="700"
-          y="40"
+          x="800"
+          y="45"
           fontSize="32"
           fontWeight="bold"
           textAnchor="middle"
           fill="#1e293b"
           fontFamily="system-ui, -apple-system, sans-serif"
         >
-          კრამ მასტერის ინტერაქციის რუკა
+          სკრამ მასტერის ინტერაქციის რუკა
         </text>
         <text
-          x="700"
-          y="70"
-          fontSize="20"
+          x="800"
+          y="75"
+          fontSize="18"
           textAnchor="middle"
           fill="#64748b"
           fontFamily="system-ui, -apple-system, sans-serif"
@@ -74,332 +90,128 @@ export const ScrumMasterInteractionMap: React.FC = () => {
           (5 გუნდიანი სტრუქტურა - Hub პრინციპი)
         </text>
 
-        {/* Connection lines from SM to other entities */}
-        {/* To POs */}
-        <line x1="700" y1="500" x2="350" y2="280" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        <line x1="350" y1="280" x2="700" y2="500" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        
-        {/* To Dev Teams */}
-        <line x1="700" y1="500" x2="1050" y2="280" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        <line x1="1050" y1="280" x2="700" y2="500" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        
-        {/* To Stakeholders */}
-        <line x1="700" y1="500" x2="350" y2="750" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        <line x1="350" y1="750" x2="700" y2="500" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
-        
-        {/* To Intersection Zone */}
-        <line x1="700" y1="500" x2="1050" y2="750" stroke="#64748b" strokeWidth="3" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
+        {/* Connection lines - drawn first so boxes render on top */}
+        {/* SM ↔ POs (green) */}
+        <line x1="620" y1="430" x2="490" y2="270" stroke="#10b981" strokeWidth="4" markerEnd="url(#arrowGreen)" />
+        <line x1="490" y1="230" x2="620" y2="410" stroke="#10b981" strokeWidth="4" markerEnd="url(#arrowBlue)" />
+        <rect x="500" y="330" width="100" height="24" rx="12" fill="white" stroke="#10b981" strokeWidth="1.5" />
+        <text x="550" y="347" fontSize="12" fontWeight="bold" textAnchor="middle" fill="#059669" fontFamily="system-ui, -apple-system, sans-serif">SM ↔ POs</text>
+
+        {/* SM ↔ DEV (orange) */}
+        <line x1="980" y1="430" x2="1110" y2="270" stroke="#f59e0b" strokeWidth="4" markerEnd="url(#arrowOrange)" />
+        <line x1="1110" y1="230" x2="980" y2="410" stroke="#f59e0b" strokeWidth="4" markerEnd="url(#arrowBlue)" />
+        <rect x="1000" y="330" width="100" height="24" rx="12" fill="white" stroke="#f59e0b" strokeWidth="1.5" />
+        <text x="1050" y="347" fontSize="12" fontWeight="bold" textAnchor="middle" fill="#d97706" fontFamily="system-ui, -apple-system, sans-serif">SM ↔ DEV</text>
+
+        {/* SM ↔ SHs (purple) */}
+        <line x1="620" y1="470" x2="490" y2="580" stroke="#8b5cf6" strokeWidth="4" markerEnd="url(#arrowPurple)" />
+        <line x1="490" y1="620" x2="620" y2="490" stroke="#8b5cf6" strokeWidth="4" markerEnd="url(#arrowBlue)" />
+        <rect x="495" y="518" width="110" height="24" rx="12" fill="white" stroke="#8b5cf6" strokeWidth="1.5" />
+        <text x="550" y="535" fontSize="12" fontWeight="bold" textAnchor="middle" fill="#6d28d9" fontFamily="system-ui, -apple-system, sans-serif">SM ↔ SHs</text>
+
+        {/* SM + POs + SHs (pink) */}
+        <line x1="980" y1="480" x2="1110" y2="600" stroke="#ec4899" strokeWidth="4" markerEnd="url(#arrowPink)" />
+        <rect x="985" y="528" width="130" height="24" rx="12" fill="white" stroke="#ec4899" strokeWidth="1.5" />
+        <text x="1050" y="545" fontSize="11" fontWeight="bold" textAnchor="middle" fill="#be185d" fontFamily="system-ui, -apple-system, sans-serif">SM + POs + SHs</text>
 
         {/* Center: SCRUM MASTER */}
-        <g id="scrumMaster">
-          <circle cx="700" cy="500" r="120" fill="url(#smGradient)" stroke="#1e293b" strokeWidth="4" />
-          <text
-            x="700"
-            y="480"
-            fontSize="24"
-            fontWeight="bold"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+        <g id="scrumMaster" filter="url(#glowBlue)">
+          <rect x="620" y="385" width="360" height="130" rx="20" fill="url(#smGradient)" stroke="#1e40af" strokeWidth="3" />
+          <text x="800" y="425" fontSize="26" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             SCRUM MASTER
           </text>
-          <text
-            x="700"
-            y="505"
-            fontSize="14"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="800" y="450" fontSize="14" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             ცენტრალური როლი
           </text>
-          <text
-            x="700"
-            y="525"
-            fontSize="12"
-            textAnchor="middle"
-            fill="#e0f2fe"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="800" y="472" fontSize="12" textAnchor="middle" fill="#e0f2fe" fontFamily="system-ui, -apple-system, sans-serif">
             ფასილიტატორი • მწვრთნელი
           </text>
-          <text
-            x="700"
-            y="542"
-            fontSize="12"
-            textAnchor="middle"
-            fill="#e0f2fe"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="800" y="492" fontSize="12" textAnchor="middle" fill="#e0f2fe" fontFamily="system-ui, -apple-system, sans-serif">
             ფარი • კოუჩი
           </text>
         </g>
 
         {/* Top Left: PRODUCT OWNERS */}
-        <g id="productOwners">
-          <rect
-            x="150"
-            y="150"
-            width="400"
-            height="260"
-            rx="15"
-            fill="url(#poGradient)"
-            stroke="#1e293b"
-            strokeWidth="3"
-          />
-          <text
-            x="350"
-            y="185"
-            fontSize="22"
-            fontWeight="bold"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+        <g id="productOwners" filter="url(#shadow)">
+          <rect x="30" y="100" width="460" height="290" rx="15" fill="url(#poGradient)" stroke="#047857" strokeWidth="2" />
+          <text x="260" y="133" fontSize="22" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             PRODUCT OWNERS (5 PO)
           </text>
-          <text
-            x="350"
-            y="210"
-            fontSize="14"
-            fontStyle="italic"
-            textAnchor="middle"
-            fill="#d1fae5"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="260" y="156" fontSize="13" fontStyle="italic" textAnchor="middle" fill="#d1fae5" fontFamily="system-ui, -apple-system, sans-serif">
             ფოკუსი: პროცესის ხარისხი და მზაობა
           </text>
-          
-          {/* Content bullets */}
-          <text x="170" y="240" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ DoR (Definition of Ready) დაცვა
-          </text>
-          <text x="170" y="265" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ ეფექტური Backlog Management
-          </text>
-          <text x="170" y="290" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Dependencies მართვა 5 გუნდს შორის
-          </text>
-          <text x="170" y="315" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Velocity ანალიზი და პროგნოზები
-          </text>
-          <text x="170" y="340" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Scrum of Scrums ფასილიტაცია
-          </text>
-          <text x="170" y="365" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ ბექლოგის პრიორიტეტიზაცია
-          </text>
-          <text x="170" y="390" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Story slicing ტექნიკები
-          </text>
+          <text x="50" y="184" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ DoR (Definition of Ready) დაცვა</text>
+          <text x="50" y="207" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ ეფექტური Backlog Management</text>
+          <text x="50" y="230" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Dependencies მართვა 5 გუნდს შორის</text>
+          <text x="50" y="253" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Velocity ანალიზი და პროგნოზები</text>
+          <text x="50" y="276" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Scrum of Scrums ფასილიტაცია</text>
+          <text x="50" y="299" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ ბექლოგის პრიორიტეტიზაცია</text>
+          <text x="50" y="322" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Story slicing ტექნიკები</text>
         </g>
 
         {/* Top Right: DEVELOPMENT TEAMS */}
-        <g id="developmentTeams">
-          <rect
-            x="850"
-            y="150"
-            width="400"
-            height="260"
-            rx="15"
-            fill="url(#devGradient)"
-            stroke="#1e293b"
-            strokeWidth="3"
-          />
-          <text
-            x="1050"
-            y="185"
-            fontSize="22"
-            fontWeight="bold"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+        <g id="developmentTeams" filter="url(#shadow)">
+          <rect x="1110" y="100" width="460" height="290" rx="15" fill="url(#devGradient)" stroke="#b45309" strokeWidth="2" />
+          <text x="1340" y="133" fontSize="22" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             DEVELOPMENT TEAMS
           </text>
-          <text
-            x="1050"
-            y="210"
-            fontSize="14"
-            fontStyle="italic"
-            textAnchor="middle"
-            fill="#fef3c7"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="1340" y="156" fontSize="13" fontStyle="italic" textAnchor="middle" fill="#fef3c7" fontFamily="system-ui, -apple-system, sans-serif">
             ფოკუსი: ეფექტურობა და გუნდის ჯანმრთელობა
           </text>
-          
-          {/* Content bullets */}
-          <text x="870" y="240" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Impediment Removal (ბლოკერების მოხსნა)
-          </text>
-          <text x="870" y="265" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ შეფასების ფასილიტაცია (Story Points)
-          </text>
-          <text x="870" y="290" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Burndown მონიტორინგი
-          </text>
-          <text x="870" y="315" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Team Happiness და მოტივაცია
-          </text>
-          <text x="870" y="340" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ რეტროსპექტივების ფასილიტაცია
-          </text>
-          <text x="870" y="365" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ გუნდური შეფასება (არა თავსმოხვეული)
-          </text>
-          <text x="870" y="390" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ რისკების დროული შეტყობინება
-          </text>
+          <text x="1130" y="184" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Impediment Removal (ბლოკერების მოხსნა)</text>
+          <text x="1130" y="207" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ შეფასების ფასილიტაცია (Story Points)</text>
+          <text x="1130" y="230" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Burndown მონიტორინგი</text>
+          <text x="1130" y="253" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Team Happiness და მოტივაცია</text>
+          <text x="1130" y="276" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ რეტროსპექტივების ფასილიტაცია</text>
+          <text x="1130" y="299" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ გუნდური შეფასება (არა თავსმოხვეული)</text>
+          <text x="1130" y="322" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ რისკების დროული შეტყობინება</text>
         </g>
 
         {/* Bottom Left: STAKEHOLDERS */}
-        <g id="stakeholders">
-          <rect
-            x="150"
-            y="620"
-            width="400"
-            height="260"
-            rx="15"
-            fill="url(#shGradient)"
-            stroke="#1e293b"
-            strokeWidth="3"
-          />
-          <text
-            x="350"
-            y="655"
-            fontSize="22"
-            fontWeight="bold"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+        <g id="stakeholders" filter="url(#shadow)">
+          <rect x="30" y="530" width="460" height="290" rx="15" fill="url(#shGradient)" stroke="#5b21b6" strokeWidth="2" />
+          <text x="260" y="563" fontSize="22" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             STAKEHOLDERS
           </text>
-          <text
-            x="350"
-            y="680"
-            fontSize="14"
-            fontStyle="italic"
-            textAnchor="middle"
-            fill="#ede9fe"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="260" y="586" fontSize="13" fontStyle="italic" textAnchor="middle" fill="#ede9fe" fontFamily="system-ui, -apple-system, sans-serif">
             ფოკუსი: მოლოდინების მართვა და განათლება
           </text>
-          
-          {/* Content bullets */}
-          <text x="170" y="710" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Agile განათლება
-          </text>
-          <text x="170" y="735" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ ცვალებადი Scope-ის უპირატესობები
-          </text>
-          <text x="170" y="760" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ რეალური მონაცემები (არა დაპირებები)
-          </text>
-          <text x="170" y="785" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ გუნდის დაცვა გარე ზეწოლისგან
-          </text>
-          <text x="170" y="810" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ სპრინტის შუა-გზაზე ცვლილებების თავიდან აცილება
-          </text>
-          <text x="170" y="835" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ გამჭვირვალობა და რეალისტური პროგნოზი
-          </text>
-          <text x="170" y="860" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ 5 გუნდის შესაძლებლობების დემონსტრაცია
-          </text>
+          <text x="50" y="614" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Agile განათლება</text>
+          <text x="50" y="637" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ ცვალებადი Scope-ის უპირატესობები</text>
+          <text x="50" y="660" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ რეალური მონაცემები (არა დაპირებები)</text>
+          <text x="50" y="683" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ გუნდის დაცვა გარე ზეწოლისგან</text>
+          <text x="50" y="706" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ სპრინტის შუა-გზაზე ცვლილებების თავიდან აცილება</text>
+          <text x="50" y="729" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ გამჭვირვალობა და რეალისტური პროგნოზი</text>
+          <text x="50" y="752" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ 5 გუნდის შესაძლებლობების დემონსტრაცია</text>
         </g>
 
         {/* Bottom Right: INTERSECTION ZONE */}
-        <g id="intersectionZone">
-          <rect
-            x="850"
-            y="620"
-            width="400"
-            height="260"
-            rx="15"
-            fill="url(#intersectionGradient)"
-            stroke="#1e293b"
-            strokeWidth="3"
-          />
-          <text
-            x="1050"
-            y="655"
-            fontSize="20"
-            fontWeight="bold"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+        <g id="intersectionZone" filter="url(#shadow)">
+          <rect x="1110" y="530" width="460" height="290" rx="15" fill="url(#intersectionGradient)" stroke="#9d174d" strokeWidth="2" />
+          <text x="1340" y="560" fontSize="20" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             გადაკვეთის ზონა
           </text>
-          <text
-            x="1050"
-            y="678"
-            fontSize="16"
-            textAnchor="middle"
-            fill="white"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="1340" y="582" fontSize="15" textAnchor="middle" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
             SM + POs + SHs (ერთად)
           </text>
-          <text
-            x="1050"
-            y="700"
-            fontSize="13"
-            fontStyle="italic"
-            textAnchor="middle"
-            fill="#fce7f3"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="1340" y="603" fontSize="13" fontStyle="italic" textAnchor="middle" fill="#fce7f3" fontFamily="system-ui, -apple-system, sans-serif">
             ფოკუსი: გამჭვირვალობა და სტრატეგია
           </text>
-          
-          {/* Content bullets */}
-          <text x="870" y="730" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Sprint Review (Demo) ფასილიტაცია
-          </text>
-          <text x="870" y="755" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ კონსტრუქციული უკუკავშირი
-          </text>
-          <text x="870" y="780" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ QBR (კვარტალური შეხვედრები)
-          </text>
-          <text x="870" y="805" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Roadmap-ის პროგრესის წარდგენა
-          </text>
-          <text x="870" y="830" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ ბიზნეს ღირებულების დემონსტრაცია
-          </text>
-          <text x="870" y="855" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">
-            ✓ Roadmap Alignment (სტრატეგიული თანხვედრა)
-          </text>
+          <text x="1130" y="631" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Sprint Review (Demo) ფასილიტაცია</text>
+          <text x="1130" y="654" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ კონსტრუქციული უკუკავშირი</text>
+          <text x="1130" y="677" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ QBR (კვარტალური შეხვედრები)</text>
+          <text x="1130" y="700" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Roadmap-ის პროგრესის წარდგენა</text>
+          <text x="1130" y="723" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ ბიზნეს ღირებულების დემონსტრაცია</text>
+          <text x="1130" y="746" fontSize="13" fill="white" fontFamily="system-ui, -apple-system, sans-serif">✓ Roadmap Alignment (სტრატეგიული თანხვედრა)</text>
         </g>
 
         {/* Legend at bottom */}
         <g id="legend">
-          <text
-            x="700"
-            y="960"
-            fontSize="14"
-            textAnchor="middle"
-            fill="#64748b"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
+          <text x="800" y="860" fontSize="14" textAnchor="middle" fill="#64748b" fontFamily="system-ui, -apple-system, sans-serif">
             ეს დიაგრამა აგებულია "ჰაბის" (Hub) პრინციპით - Scrum Master ცენტრში მართავს პროცესებს სხვადასხვა მიმართულებით
           </text>
-          <text
-            x="700"
-            y="985"
-            fontSize="12"
-            textAnchor="middle"
-            fill="#94a3b8"
-            fontFamily="system-ui, -apple-system, sans-serif"
-          >
-            ორმხრივი ისრები (↔️) აჩვენებს აქტიურ, უწყვეტ კომუნიკაციას ყველა როლს შორის
+          <text x="800" y="882" fontSize="12" textAnchor="middle" fill="#94a3b8" fontFamily="system-ui, -apple-system, sans-serif">
+            ფერადი ხაზები აჩვენებს აქტიურ, უწყვეტ კომუნიკაციას ყველა როლს შორის
           </text>
         </g>
       </svg>

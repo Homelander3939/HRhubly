@@ -95,13 +95,28 @@ HRhubly/
 - **Rich Text:** TipTap
 - **Authentication:** JWT with bcrypt
 
-## 🌐 Preview Environment
+## 🌐 Public Preview Access
 
-This project is configured for automatic preview deployments. Every push to this repository can trigger a preview build that you can access to see your changes live.
+### Get a Public URL for Your Development Environment
 
-### GitHub Pages Deployment (Coming Soon)
+Want to access your HR platform from any browser and see changes in real-time? Use our public preview setup!
 
-We're setting up GitHub Actions to automatically deploy previews to GitHub Pages. Once configured, each commit will generate a preview URL.
+**Quick Start:**
+
+```bash
+# Run the setup script
+./scripts/start-public-preview.sh   # Linux/macOS
+# or
+scripts\start-public-preview.bat    # Windows
+```
+
+This will create a public URL (like `https://your-app.trycloudflare.com`) that you can:
+- 🌍 Access from any browser, anywhere
+- 📱 Test on mobile devices
+- 🔄 See code changes in real-time (hot reload)
+- 👥 Share with others for feedback
+
+**📖 See [PUBLIC_PREVIEW.md](./PUBLIC_PREVIEW.md) for detailed setup instructions.**
 
 ### Local Preview
 

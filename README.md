@@ -2,6 +2,28 @@
 
 A comprehensive HR management system built with React, TypeScript, TanStack Router, tRPC, and Prisma. This platform provides features for candidate management, test administration, vacancy management, and AI-powered resume analysis.
 
+---
+
+## 🌐 **QUICK ACCESS: Get a Public Preview Link NOW!**
+
+**Want to access your HR platform from ANY browser, ANY device, ANYWHERE?**
+
+```bash
+# Just run this single command:
+pnpm quick-preview
+```
+
+🎉 **You'll get a public URL like: `https://your-app.trycloudflare.com`**
+
+✅ No localhost limitations  
+✅ No Docker complexity  
+✅ No complex setup  
+✅ Just works from anywhere!
+
+**📖 See [SIMPLE_PREVIEW_GUIDE.md](./SIMPLE_PREVIEW_GUIDE.md) for full instructions**
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites

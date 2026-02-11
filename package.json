@@ -6,6 +6,7 @@
     "build": "vinxi build",
     "start": "vinxi start",
     "preview": "node scripts/preview.cjs",
+    "quick-preview": "bash scripts/quick-preview.sh",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . -c eslint.config.mjs --max-warnings 0",
     "db:generate": "prisma migrate dev",

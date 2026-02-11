@@ -4,6 +4,19 @@ This directory contains utility scripts for the HRhubly project.
 
 ## Public Preview Scripts
 
+### `preview.cjs` (Cross-platform launcher)
+
+A Node.js script that automatically detects your operating system and runs the appropriate platform-specific script.
+
+**Usage:**
+```bash
+pnpm preview
+# or
+node scripts/preview.cjs
+```
+
+This is the recommended way to start a public tunnel as it works on all platforms.
+
 ### `start-public-preview.sh` (Linux/macOS)
 
 Creates a public tunnel to your local development server, allowing you to access your app from any browser worldwide.

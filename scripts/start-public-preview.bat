@@ -10,6 +10,23 @@ echo.
 echo ================================================================================
 echo.
 
+REM Check if curl is available
+where curl >nul 2>&1
+if %errorlevel% neq 0 (
+    echo ⚠️  curl is not installed
+    echo.
+    echo curl is required to check if your dev server is running.
+    echo.
+    echo On Windows 10 1803+ and Windows 11, curl is pre-installed.
+    echo If curl is missing, you can install it with:
+    echo.
+    echo   winget install curl
+    echo.
+    echo Or download from: https://curl.se/windows/
+    echo.
+    exit /b 1
+)
+
 REM Check if dev server is running
 echo Step 1: Checking your development environment...
 echo.

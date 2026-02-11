@@ -25,16 +25,33 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Check if curl is available
+if ! command_exists curl; then
+    echo -e "${RED}⚠️  curl is not installed${NC}"
+    echo
+    echo "curl is required to check if your dev server is running."
+    echo "Please install curl first:"
+    echo
+    echo -e "  macOS:   ${GREEN}brew install curl${NC} (usually pre-installed)"
+    echo -e "  Linux:   ${GREEN}sudo apt install curl${NC} or ${GREEN}sudo yum install curl${NC}"
+    echo
+    exit 1
+fi
+
 # Function to check if dev server is running
 check_dev_server() {
     local port=$1
-    local http_code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:${port}" 2>/dev/null || echo "000")
+    local http_code
     
-    # Only accept 200 OK as a successful dev server response
-    # This ensures the server is actually responding correctly, not just redirecting
-    if [ "$http_code" = "200" ]; then
+    # Try to get HTTP status code, handle curl errors gracefully
+    http_code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:${port}" 2>/dev/null)
+    local curl_exit=$?
+    
+    # Check if curl succeeded (exit code 0) and got a 200 response
+    if [ $curl_exit -eq 0 ] && [ "$http_code" = "200" ]; then
         return 0
     else
+        # Connection failed or non-200 response
         return 1
     fi
 }

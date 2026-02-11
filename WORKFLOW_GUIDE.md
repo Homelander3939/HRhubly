@@ -132,7 +132,7 @@ https://clever-bird-123.trycloudflare.com
                          ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ YOUR BROWSER:                                               │
-│ 1. Go to: https://your-url.trycloudflare.com/dashboard/... │
+│ 1. Go to: https://your-url.trycloudflare.com/dashboard/employee │
 │ 2. Refresh (or wait for hot reload)                        │
 │ 3. ✅ See the new dashboard!                                │
 └─────────────────────────────────────────────────────────────┘

@@ -95,7 +95,7 @@ Here's your workflow:
 - Tells you it's done
 
 ### 3. See Changes Instantly
-- The changes are already in your local repo
+- The changes are committed by Copilot and automatically reflected in your local working directory
 - Your dev server (`pnpm dev`) auto-reloads with hot reload
 - Refresh your public URL: **https://your-link.trycloudflare.com**
 - **BAM!** You see the changes immediately

@@ -120,14 +120,14 @@ else
     
     # Start dev server in background
     echo "Starting development server..."
-    pnpm dev > /dev/null 2>&1 &
+    pnpm dev > dev-server.log 2>&1 &
     DEV_SERVER_PID=$!
     
     echo "Waiting for server to start..."
     sleep 5
     
     # Check if server started
-    for i in {1..12}; do
+    for _ in {1..12}; do
         if [ "$(check_dev_server 3000)" = "200" ]; then
             DEV_PORT="3000"
             echo -e "${GREEN}✓ Dev server started successfully on port 3000${NC}"

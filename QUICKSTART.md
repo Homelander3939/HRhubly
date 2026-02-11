@@ -37,7 +37,31 @@ pnpm dev
 
 Changes you make will automatically reload in the browser!
 
-### Option 2: Docker Preview (Full Environment)
+### Option 2: Public Preview URL (Access from Anywhere) 🌍
+
+Want to access your app from any device or share it with others?
+
+```bash
+# First, start your dev server in one terminal
+pnpm dev
+
+# Then, in another terminal, create a public URL
+pnpm preview
+# Or directly: ./scripts/start-public-preview.sh
+```
+
+🎉 You'll get a public URL like **https://your-app.trycloudflare.com**
+
+This public URL allows you to:
+- 🌍 Access from any browser, anywhere in the world
+- 📱 Test on mobile devices (phone, tablet)
+- 🔄 See code changes in real-time (hot reload works!)
+- 👥 Share with team members, clients, or stakeholders
+- 🔗 Create short links for easy sharing
+
+**📖 See [PUBLIC_PREVIEW.md](./PUBLIC_PREVIEW.md) for detailed instructions and troubleshooting.**
+
+### Option 3: Docker Preview (Full Environment)
 
 For a complete environment with database, Redis, etc.:
 
@@ -52,7 +76,13 @@ Additional services:
 - **Database Admin (Adminer):** http://localhost:8000/adminer
 - **MinIO Console:** http://localhost:9001
 
-### Option 3: GitHub Actions (Automated)
+To create a public URL for Docker setup:
+```bash
+# In another terminal
+cloudflared tunnel --url http://localhost:8000
+```
+
+### Option 4: GitHub Actions (Automated)
 
 Every push to GitHub triggers automated checks:
 

@@ -14,15 +14,17 @@ REM Check if dev server is running
 echo Step 1: Checking your development environment...
 echo.
 
-curl -s -o nul http://localhost:3000
-if %errorlevel% equ 0 (
+REM Check port 3000 with HTTP status code
+for /f "delims=" %%i in ('curl -s -o nul -w "%%{http_code}" http://localhost:3000 2^>nul') do set HTTP_CODE_3000=%%i
+if "%HTTP_CODE_3000%"=="200" (
     set DEV_PORT=3000
     echo ✓ Development server detected on port 3000
     goto :check_tunnel
 )
 
-curl -s -o nul http://localhost:8000
-if %errorlevel% equ 0 (
+REM Check port 8000 with HTTP status code
+for /f "delims=" %%i in ('curl -s -o nul -w "%%{http_code}" http://localhost:8000 2^>nul') do set HTTP_CODE_8000=%%i
+if "%HTTP_CODE_8000%"=="200" (
     set DEV_PORT=8000
     echo ✓ Development server detected on port 8000
     goto :check_tunnel

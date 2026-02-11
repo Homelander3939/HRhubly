@@ -5,7 +5,7 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "vinxi start",
-    "preview": "bash scripts/start-public-preview.sh",
+    "preview": "node -e \"require('child_process').execSync(process.platform === 'win32' ? 'scripts\\\\start-public-preview.bat' : 'bash scripts/start-public-preview.sh', {stdio: 'inherit'})\"",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . -c eslint.config.mjs --max-warnings 0",
     "db:generate": "prisma migrate dev",

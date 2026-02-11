@@ -28,7 +28,11 @@ command_exists() {
 # Function to check if dev server is running
 check_dev_server() {
     local port=$1
-    if curl -s -o /dev/null -w "%{http_code}" "http://localhost:${port}" | grep -q "200\|301\|302"; then
+    local http_code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:${port}" 2>/dev/null || echo "000")
+    
+    # Only accept 200 OK as a successful dev server response
+    # This ensures the server is actually responding correctly, not just redirecting
+    if [ "$http_code" = "200" ]; then
         return 0
     else
         return 1

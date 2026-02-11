@@ -14,22 +14,23 @@
 └──────────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                       🌐 GET A PUBLIC PREVIEW LINK NOW!                      │
+│              🌐 GET YOUR PUBLIC PREVIEW LINK - SUPER SIMPLE! 🌐              │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
-│  Want to access your HR platform from ANY browser, ANYWHERE? 🌍             │
+│  ⚡ ONE COMMAND TO RULE THEM ALL:                                            │
 │                                                                              │
-│  Quick Start (Just 3 steps):                                                │
-│  ───────────────────────────                                                │
-│    1. Start dev server:    pnpm dev                                         │
-│    2. Create public link:  pnpm preview                                     │
-│    3. Get your URL:        https://your-app.trycloudflare.com              │
+│     pnpm quick-preview                                                       │
 │                                                                              │
-│  ✨ Access from any device, see changes in real-time!                        │
+│  That's it! You'll get: https://your-app.trycloudflare.com                 │
 │                                                                              │
-│  📖 Full Guide: PUBLIC_PREVIEW.md                                            │
-│  📋 Quick Ref:  PUBLIC_PREVIEW_QUICKREF.md                                  │
-│  💡 Examples:   PUBLIC_PREVIEW_EXAMPLES.md                                  │
+│  ✅ No localhost                                                             │
+│  ✅ No Docker complexity                                                     │
+│  ✅ No setup hassles                                                         │
+│  ✅ Access from ANYWHERE - phone, tablet, any browser!                       │
+│  ✅ Share with ANYONE instantly!                                             │
+│                                                                              │
+│  📖 Full Simple Guide: SIMPLE_PREVIEW_GUIDE.md                              │
+│  📖 Workflow Guide:    WORKFLOW_GUIDE.md                                     │
 │                                                                              │
 └──────────────────────────────────────────────────────────────────────────────┘
 

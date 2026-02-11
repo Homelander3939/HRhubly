@@ -165,6 +165,32 @@ Use Adminer at http://localhost:8000/adminer or run:
 pnpm db:studio
 ```
 
+## 📚 Documentation
+
+This project has comprehensive documentation to help you get started and work effectively:
+
+### Getting Started
+- **[QUICKSTART.md](./QUICKSTART.md)** - Quick start guide with preview environment setup
+- **[README.md](./README.md)** - This file - project overview and basics
+
+### Development
+- **[DEVELOPMENT.md](./DEVELOPMENT.md)** - Complete developer guide and best practices
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - How to contribute to the project
+
+### Public Preview (Access from Anywhere) 🌐
+- **[PUBLIC_PREVIEW.md](./PUBLIC_PREVIEW.md)** - Full guide to creating public preview links
+- **[PUBLIC_PREVIEW_EXAMPLES.md](./PUBLIC_PREVIEW_EXAMPLES.md)** - Real-world usage examples
+- **[PUBLIC_PREVIEW_QUICKREF.md](./PUBLIC_PREVIEW_QUICKREF.md)** - Quick reference card
+
+**TL;DR:** Run `pnpm preview` to get a public URL you can access from any device!
+
+### Deployment
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment guide for various platforms
+- **[CREDENTIALS.md](./CREDENTIALS.md)** - Credentials and access information
+
+### Links & Setup
+- **[LINKS_AND_PREVIEW.txt](./LINKS_AND_PREVIEW.txt)** - Quick reference for all important links
+
 ## 📧 Email Configuration
 
 The platform includes email functionality for notifications and password resets. Configure your email service (Resend recommended) in the `.env` file.

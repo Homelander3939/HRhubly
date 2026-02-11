@@ -14,6 +14,26 @@
 └──────────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────────────────────┐
+│                       🌐 GET A PUBLIC PREVIEW LINK NOW!                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  Want to access your HR platform from ANY browser, ANYWHERE? 🌍             │
+│                                                                              │
+│  Quick Start (Just 3 steps):                                                │
+│  ───────────────────────────                                                │
+│    1. Start dev server:    pnpm dev                                         │
+│    2. Create public link:  pnpm preview                                     │
+│    3. Get your URL:        https://your-app.trycloudflare.com              │
+│                                                                              │
+│  ✨ Access from any device, see changes in real-time!                        │
+│                                                                              │
+│  📖 Full Guide: PUBLIC_PREVIEW.md                                            │
+│  📋 Quick Ref:  PUBLIC_PREVIEW_QUICKREF.md                                  │
+│  💡 Examples:   PUBLIC_PREVIEW_EXAMPLES.md                                  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
 │                              🔗 QUICK LINKS                                  │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │

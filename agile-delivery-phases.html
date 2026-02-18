@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agile Delivery - 5 ფაზიანი ჩარტი</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: radial-gradient(circle at 20% 20%, #ecfeff, #e0f2fe 40%, #dbeafe 70%, #e0e7ff);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wrapper {
+      width: min(1680px, 100%);
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+      padding: 24px;
+      border: 1px solid #e2e8f0;
+    }
+    h1 {
+      text-align: center;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    p.subtitle {
+      text-align: center;
+      margin: 6px 0 16px;
+      color: #475569;
+      font-size: 17px;
+    }
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+    }
+    .svg-holder {
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .primary { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .secondary { background: linear-gradient(135deg, #10b981, #059669); }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Agile Delivery – 5 ფაზიანი ჩარტი</h1>
+    <p class="subtitle">სკრამ მასტერის პროცესის ვიზუალური რუკა 5-გუნდიანი სტრუქტურისთვის</p>
+    <div class="buttons">
+      <button class="primary" onclick="downloadSVG()">📥 ჩამოტვირთვა SVG</button>
+      <button class="secondary" onclick="downloadPNG()">📥 ჩამოტვირთვა PNG</button>
+    </div>
+    <div class="svg-holder">
+      <svg id="agile-phases-svg" width="1600" height="950" viewBox="0 0 1600 950" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="phase1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22d3ee"/>
+            <stop offset="100%" stop-color="#0ea5e9"/>
+          </linearGradient>
+          <linearGradient id="phase2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#34d399"/>
+            <stop offset="100%" stop-color="#16a34a"/>
+          </linearGradient>
+          <linearGradient id="phase3" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+          <linearGradient id="phase4" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a78bfa"/>
+            <stop offset="100%" stop-color="#7c3aed"/>
+          </linearGradient>
+          <linearGradient id="phase5" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fb7185"/>
+            <stop offset="100%" stop-color="#e11d48"/>
+          </linearGradient>
+          <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.08"/>
+          </linearGradient>
+          <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+          </filter>
+          <marker id="arrow" markerWidth="18" markerHeight="12" refX="12" refY="6" orient="auto">
+            <polygon points="0 0, 18 6, 0 12" fill="#475569"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="1600" height="950" rx="18" fill="url(#headerGrad)"/>
+
+        <text x="800" y="70" text-anchor="middle" font-size="30" font-weight="800" fill="#0f172a">„Engine“-ის ხედვა</text>
+        <text x="800" y="102" text-anchor="middle" font-size="18" fill="#475569">Hiring → Standards → Planning → Delivery → KPI ეკოსისტემა</text>
+
+        <g id="connections" stroke="#94a3b8" stroke-width="5" marker-end="url(#arrow)" fill="none" opacity="0.9">
+          <line x1="290" y1="370" x2="520" y2="370"/>
+          <line x1="590" y1="370" x2="820" y2="370"/>
+          <line x1="890" y1="370" x2="1120" y2="370"/>
+          <line x1="1190" y1="370" x2="1420" y2="370"/>
+        </g>
+
+        <g font-family="Segoe UI, system-ui, sans-serif">
+          <g filter="url(#shadow)">
+            <rect x="40" y="180" width="260" height="360" rx="18" fill="url(#phase1)"/>
+            <circle cx="72" cy="206" r="22" fill="#0ea5e9" stroke="#e0f2fe" stroke-width="3"/>
+            <text x="72" y="214" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">1</text>
+            <text x="170" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">გუნდის ფორმირება და ადაპტაცია</text>
+            <text x="170" y="258" text-anchor="middle" font-size="13" fill="#0f172a" opacity="0.9">(Hiring &amp; Onboarding)</text>
+            <text x="60" y="292" font-size="13.5" fill="#0f172a">• PO-ების გასაუბრება და შერჩევა</text>
+            <text x="60" y="314" font-size="12.5" fill="#0f172a" opacity="0.9">  Agile აზროვნება, 5-გუნდიანი სირთულეები</text>
+            <text x="60" y="342" font-size="13.5" fill="#0f172a">• ორგანიზაციული სტრუქტურის გაცნობა</text>
+            <text x="60" y="364" font-size="12.5" fill="#0f172a" opacity="0.9">  იერარქია, კავშირები, 5-გუნდიანი მოდელი</text>
+            <text x="60" y="392" font-size="13.5" fill="#0f172a">• ონბორდინგი</text>
+            <text x="60" y="414" font-size="12.5" fill="#0f172a" opacity="0.9">  კულტურა, არხები, სკრამ მასტერის მოლოდინები</text>
+          </g>
+
+          <g filter="url(#shadow)">
+            <rect x="340" y="180" width="260" height="360" rx="18" fill="url(#phase2)"/>
+            <circle cx="372" cy="206" r="22" fill="#16a34a" stroke="#e0f2fe" stroke-width="3"/>
+            <text x="372" y="214" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">2</text>
+            <text x="470" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">ხარისხის ჩარჩოს შექმნა</text>
+            <text x="470" y="258" text-anchor="middle" font-size="13" fill="#0f172a" opacity="0.9">(Defining the Standards)</text>
+            <text x="360" y="292" font-size="13.5" fill="#0f172a">• BRD-ის ანალიზი</text>
+            <text x="360" y="314" font-size="12.5" fill="#0f172a" opacity="0.9">  ბიზნეს მოთხოვნებიდან ტექნიკურ დავალებამდე</text>
+            <text x="360" y="342" font-size="13.5" fill="#0f172a">• DoR &amp; DoD BRD-ზე დაყრდნობით</text>
+            <text x="360" y="370" font-size="13.5" fill="#0f172a">• საერთო Done ნიშნული 5 გუნდისთვის</text>
+          </g>
+
+          <g filter="url(#shadow)">
+            <rect x="640" y="180" width="260" height="360" rx="18" fill="url(#phase3)"/>
+            <circle cx="672" cy="206" r="22" fill="#f59e0b" stroke="#fff7ed" stroke-width="3"/>
+            <text x="672" y="214" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">3</text>
+            <text x="770" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">ტაქტიკური დაგეგმარება და ინტეგრაცია</text>
+            <text x="770" y="258" text-anchor="middle" font-size="13" fill="#0f172a" opacity="0.9">(The Engine)</text>
+            <text x="660" y="292" font-size="13.5" fill="#0f172a">• Backlog Refinement (BRD-ის მიხედვით)</text>
+            <text x="660" y="320" font-size="13.5" fill="#0f172a">• Scrum of Scrums &amp; დეფენდენსების მართვა</text>
+            <text x="660" y="348" font-size="13.5" fill="#0f172a">• სპრინტში შეყვანის გადაწყვეტილება</text>
+            <text x="660" y="370" font-size="12.5" fill="#0f172a" opacity="0.9">  რომ გუნდები არ გაჩერდნენ</text>
+          </g>
+
+          <g filter="url(#shadow)">
+            <rect x="940" y="180" width="260" height="360" rx="18" fill="url(#phase4)"/>
+            <circle cx="972" cy="206" r="22" fill="#7c3aed" stroke="#ede9fe" stroke-width="3"/>
+            <text x="972" y="214" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">4</text>
+            <text x="1070" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">ციკლის დასრულება და ანალიტიკა</text>
+            <text x="1070" y="258" text-anchor="middle" font-size="13" fill="#0f172a" opacity="0.9">(Delivery &amp; Feedback)</text>
+            <text x="960" y="292" font-size="13.5" fill="#0f172a">• Sprint Review (ინტეგრირებული დემო)</text>
+            <text x="960" y="320" font-size="13.5" fill="#0f172a">• შესრულებული სამუშაოს შედარება BRD-თან</text>
+            <text x="960" y="348" font-size="13.5" fill="#0f172a">• დეტალური რეპორტი</text>
+            <text x="960" y="370" font-size="12.5" fill="#0f172a" opacity="0.9">  Velocity · Burndown · ხარისხის მეტრიკები</text>
+          </g>
+
+          <g filter="url(#shadow)">
+            <rect x="1240" y="180" width="260" height="360" rx="18" fill="url(#phase5)"/>
+            <circle cx="1272" cy="206" r="22" fill="#e11d48" stroke="#ffe4e6" stroke-width="3"/>
+            <text x="1272" y="214" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">5</text>
+            <text x="1370" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">სტრატეგიული შედეგები და KPI ეკოსისტემა</text>
+            <text x="1370" y="258" text-anchor="middle" font-size="13" fill="#0f172a" opacity="0.9">(Sustainable Outcomes)</text>
+            <text x="1260" y="292" font-size="13.5" fill="#0f172a">• პროექტები დედლაინში სწორი პროცესით</text>
+            <text x="1260" y="320" font-size="13.5" fill="#0f172a">• სტაბილური/ზრდადი ველოსიტი 5 გუნდის ჭრილში</text>
+            <text x="1260" y="348" font-size="13.5" fill="#0f172a">• მიზნების მიღწევის დადასტურება</text>
+            <text x="1260" y="370" font-size="12.5" fill="#0f172a" opacity="0.9">  ბიზნესი · PO · გუნდი</text>
+          </g>
+        </g>
+
+        <rect x="110" y="590" width="1380" height="250" rx="18" fill="#0f172a" opacity="0.92" filter="url(#shadow)"/>
+        <text x="800" y="630" text-anchor="middle" font-size="20" font-weight="800" fill="#e2e8f0">რითი ვაზღვევთ სტაბილურობას?</text>
+        <text x="800" y="660" text-anchor="middle" font-size="14" fill="#cbd5e1">5-გუნდიანი ჰაბი · SoS · ერთიანი DoR/DoD · გამჭვირვალე მეტრიკები</text>
+        <text x="200" y="698" font-size="13.5" fill="#e2e8f0">• ერთად დავგეგმოთ დეფენდენსები, რომ გუნდები არ გაჩერდნენ</text>
+        <text x="200" y="724" font-size="13.5" fill="#e2e8f0">• Sprint Review-ზე ვამოწმებთ შესაბამისობას საწყის BRD-თან</text>
+        <text x="200" y="750" font-size="13.5" fill="#e2e8f0">• რეპორტი: Velocity · Burndown · ხარისხი → სთეიქჰოლდერებისთვის</text>
+        <text x="200" y="776" font-size="13.5" fill="#e2e8f0">• KPI ეკოსისტემა: დედლაინები, პროგნოზირებადი ველოსიტი, სტაბილური გუნდი</text>
+        <text x="800" y="820" text-anchor="middle" font-size="15" font-weight="700" fill="#f1f5f9">შედეგი: პროგნოზირებადი დელივერი, ოპტიმიზირებული რესურსები და თანამშრომლობის გამჭვირვალობა</text>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    function downloadSVG() {
+      const svg = document.querySelector('#agile-phases-svg');
+      if (!svg) return;
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'agile-delivery-phases.svg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadPNG() {
+      const svg = document.querySelector('#agile-phases-svg');
+      if (!svg) return;
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      canvas.width = 3200;
+      canvas.height = 1900;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'agile-delivery-phases.png';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }, 'image/png');
+      };
+      const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      img.src = url;
+    }
+  </script>
+</body>
+</html>
